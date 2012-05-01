@@ -1,7 +1,9 @@
-Modified version by Felix C. Stegerman <felixstegerman@noxqslabs.nl>, 2012-05-01.
+Modified version by Felix C. Stegerman
+&lt;felixstegerman@noxqslabs.nl&gt;, 2012-05-01.
 
 * Updated for cordova 1.6.0.
-* In step 4, edit AlarmReciever.java line 14 (marked w/ FIXME) to use your package.
+* In step 4, edit AlarmReciever.java line 14 (marked w/ FIXME) to use
+  your package.
 
 --
 
