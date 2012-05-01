@@ -9,8 +9,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
 
-import com.phonegap.api.Plugin;
-import com.phonegap.api.PluginResult;
+import org.apache.cordova.api.Plugin;
+import org.apache.cordova.api.PluginResult;
 
 /**
  * This plugin utilizes the Android AlarmManager in combination with StatusBar
@@ -32,7 +32,7 @@ public class LocalNotification extends Plugin {
 
     @Override
     public PluginResult execute(String action, JSONArray optionsArr, String callBackId) {
-	alarm = new AlarmHelper(this.ctx);
+	alarm = new AlarmHelper(this.ctx.getContext());
 	Log.d(PLUGIN_NAME, "Plugin execute called with action: " + action);
 
 	PluginResult result = null;
@@ -125,7 +125,7 @@ public class LocalNotification extends Plugin {
 	 * all our alarms to loop through these alarms and unregister them one
 	 * by one.
 	 */
-	final SharedPreferences alarmSettings = this.ctx.getSharedPreferences(PLUGIN_NAME, Context.MODE_PRIVATE);
+	final SharedPreferences alarmSettings = this.ctx.getContext().getSharedPreferences(PLUGIN_NAME, Context.MODE_PRIVATE);
 	final boolean result = alarm.cancelAll(alarmSettings);
 
 	if (result) {
@@ -148,7 +148,7 @@ public class LocalNotification extends Plugin {
      * @return true when successfull, otherwise false
      */
     private boolean persistAlarm(String alarmId, JSONArray optionsArr) {
-	final Editor alarmSettingsEditor = this.ctx.getSharedPreferences(PLUGIN_NAME, Context.MODE_PRIVATE).edit();
+	final Editor alarmSettingsEditor = this.ctx.getContext().getSharedPreferences(PLUGIN_NAME, Context.MODE_PRIVATE).edit();
 
 	alarmSettingsEditor.putString(alarmId, optionsArr.toString());
 
@@ -164,7 +164,7 @@ public class LocalNotification extends Plugin {
      * @return true when successfull, otherwise false
      */
     private boolean unpersistAlarm(String alarmId) {
-	final Editor alarmSettingsEditor = this.ctx.getSharedPreferences(PLUGIN_NAME, Context.MODE_PRIVATE).edit();
+	final Editor alarmSettingsEditor = this.ctx.getContext().getSharedPreferences(PLUGIN_NAME, Context.MODE_PRIVATE).edit();
 
 	alarmSettingsEditor.remove(alarmId);
 
@@ -177,7 +177,7 @@ public class LocalNotification extends Plugin {
      * @return true when successfull, otherwise false
      */
     private boolean unpersistAlarmAll() {
-	final Editor alarmSettingsEditor = this.ctx.getSharedPreferences(PLUGIN_NAME, Context.MODE_PRIVATE).edit();
+	final Editor alarmSettingsEditor = this.ctx.getContext().getSharedPreferences(PLUGIN_NAME, Context.MODE_PRIVATE).edit();
 
 	alarmSettingsEditor.clear();
 
