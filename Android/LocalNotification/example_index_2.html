@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>PhoneGap</title>
+<script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="LocalNotification.js"></script>
+
+<script type="text/javascript">
+    document.addEventListener("deviceready", appReady, false);
+
+    function appReady() {
+        console.log('OK.');
+
+        if (typeof plugins !== "undefined") {
+            //plugins.localNotification.cancelNotification (666);
+            console.log ('A');
+            var x = {
+                date : new Date (new Date ().getTime () + 200000),
+                message : "Phonegap - Local Notification\r\nSubtitle comes after linebreak",
+                ticker : "... 666",
+                repeatDaily : false,
+                id : 666
+            };
+            console.log (JSON.stringify (x));
+            plugins.localNotification.add(x);
+            console.log ('B');
+        }
+    }
+
+    document.addEventListener("deviceready", appReady, false);
+</script>
+
+</head>
+<body>
+<h1>Hello World</h1>
+</body>
+</html>

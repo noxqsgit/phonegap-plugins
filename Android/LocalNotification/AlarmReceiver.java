@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+// import my.pkg.R; // <-- FIXME
+
 /**
  * The alarm receiver is triggered when a scheduled alarm is fired. This class
  * reads the information in the intent and displays this information in the

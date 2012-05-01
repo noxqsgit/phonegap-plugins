@@ -1,3 +1,10 @@
+Modified version by Felix C. Stegerman <felixstegerman@noxqslabs.nl>, 2012-05-01.
+
+* Updated for cordova 1.6.0.
+* In step 4, edit AlarmReciever.java line 14 (marked w/ FIXME) to use your package.
+
+--
+
 The Android implementation for local notification uses a similar interface as the existing iOS localnotification plugin. The plugin depends on the Android AlarmManager in combination with the Notification Bar.
 To use this plugin, you need to perform the following steps:
 
